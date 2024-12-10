@@ -80,6 +80,35 @@ In ssh out of container, shut down dt-core:
 #### :pencil: Planner (planner)
 Dijkstra with direction of streets encoded. Images to be included. (TODO)
 
+#### State Machine Diagram
+
+```mermaid
+stateDiagram-v2
+    
+    PlanTrajectory --> LaneFollowing: plan complete
+    
+    LaneFollowing --> ObstacleAvoidance: obstacle observed
+    ObstacleAvoidance --> LaneFollowing: obstacle overtaken
+    ObstacleAvoidance --> ObstacleAvoidance: overtaking obstacle
+    
+    note right of ObstacleAvoidance
+        driving around
+        obstacle 
+    end note
+    
+    LaneFollowing --> Stop: AprilTag detected
+    Stop --> LaneFollowing: nothing changed
+    Stop --> TurningRightLeftU: TurnAprilTag
+    Stop --> Stop: GoalAprilTag
+    Stop --> PlanTrajectory: new goal given
+    
+    TurningRightLeftU --> LaneFollowing: turn finished
+    
+    note right of TurningRightLeftU
+        according to AprilTag & plan
+    end note
+```
+
 #### :mag_right: Obstacle Detection
 :black_square_button:TODO: COPYRIGHT of the repo
 Set up [darknet_ros](https://github.com/leggedrobotics/darknet_ros) on duckie:  
