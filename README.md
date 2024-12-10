@@ -80,7 +80,7 @@ In ssh out of container, shut down dt-core:
 #### :pencil: Planner (planner)
 Dijkstra with direction of streets encoded. Images to be included. (TODO)
 
-#### State Machine Diagram
+#### :arrows_counterclockwise: State Machine Diagram
 
 ```mermaid
 stateDiagram-v2
