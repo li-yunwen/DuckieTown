@@ -91,11 +91,6 @@ stateDiagram-v2
     ObstacleAvoidance --> LaneFollowing: obstacle overtaken
     ObstacleAvoidance --> ObstacleAvoidance: overtaking obstacle
     
-    note right of ObstacleAvoidance
-        driving around
-        obstacle 
-    end note
-    
     LaneFollowing --> Stop: AprilTag detected
     Stop --> LaneFollowing: nothing changed
     Stop --> TurningRightLeftU: TurnAprilTag
